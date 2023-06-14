@@ -8,7 +8,7 @@ use App\Http\Controllers\ProductController;
 
 Route::get('/products/list', [ProductController::class, 'index']);
 Route::get('/products/detail/{id}', [ProductController::class, 'show']);
-Route::put('/products/edit/{id}', [ProductController::class, 'edit']);
+Route::post('/products/edit/{id}', [ProductController::class, 'edit']);
 Route::delete('/products/delete/{id}', [ProductController::class, 'delete']);
 Route::post('/products/add', [ProductController::class, 'store']);
 Route::get('/images/{filename}', [ProductController::class, 'image']);
@@ -18,6 +18,7 @@ use App\Http\Controllers\AuthController;
 
 Route::post('/auth/regis', [AuthController::class, 'register']);
 Route::post('/auth/login', [AuthController::class, 'login']);
+Route::post('/auth/logout', [AuthController::class, 'logout']);
 
 /*
 |--------------------------------------------------------------------------

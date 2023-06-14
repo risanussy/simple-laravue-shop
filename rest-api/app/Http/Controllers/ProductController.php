@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -34,7 +35,7 @@ class ProductController extends Controller
         $data = $request->validate([
             'nama' => 'required',
             'desc' => 'required',
-            'foto' => 'image|max:2048',
+            'foto' => 'image|max:204',
             'harga' => 'required|numeric',
         ]);
 
@@ -71,12 +72,7 @@ class ProductController extends Controller
         }
 
         $product = Product::find($id);
-        $product->nama = $data['nama'];
-        $product->desc = $data['desc'];
-        $product->foto = $data['foto'];
-        $product->harga = $data['harga'];
-
-        $product->save();
+        $product->update($data);
 
         return response()->json([
             "message" => "Product berhasil diedit",

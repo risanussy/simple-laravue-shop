@@ -48,4 +48,15 @@ class AuthController extends Controller
             "code" => 401
         ]);
     }
+
+    public function logout(Request $request){
+        $user = $request->user();
+
+        Auth::logout();
+        
+        return response()->json([
+            "message" => "Berhasil Logout",
+            "code" => 200,
+        ]);
+    }
 }

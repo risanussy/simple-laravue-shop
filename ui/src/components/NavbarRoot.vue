@@ -17,13 +17,27 @@
             <router-link class="nav-link" to="/form">Admin</router-link>
           </li>
         </ul>
+        <div class="ms-auto">
+          <button class="btn btn-outline-danger" @click="logout()">
+            Log-out
+          </button>
+        </div>
       </div>
     </div>
   </nav>
 </template>
 
 <script>
+    import axios from 'axios';
     export default {
-        name:'navbarRoot'
+        name:'navbarRoot',
+        methods: {
+          logout(){
+            axios.post("http://localhost:8000/api/auth/logout")
+            .then(()=> {
+              window.location = '/' 
+            })
+          }
+        }
     }
 </script>
